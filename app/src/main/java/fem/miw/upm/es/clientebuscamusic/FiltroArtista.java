@@ -2,12 +2,13 @@ package fem.miw.upm.es.clientebuscamusic;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
 public class FiltroArtista extends Activity {
+
+    private static final String KEY_ARTISTA = "ARTISTA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,9 +17,9 @@ public class FiltroArtista extends Activity {
     }
 
     public void buscarArtistaFiltro(View v){
-        EditText nombreArtista = (EditText) findViewById(R.id.edit_filtroartista);
+        EditText nombreArtista = findViewById(R.id.edit_filtroartista);
         Intent i = new Intent (this, BuscarArtista.class);
-        i.putExtra("ARTISTA", nombreArtista.getText().toString());
+        i.putExtra(KEY_ARTISTA, nombreArtista.getText().toString());
         startActivity(i);
     }
 }

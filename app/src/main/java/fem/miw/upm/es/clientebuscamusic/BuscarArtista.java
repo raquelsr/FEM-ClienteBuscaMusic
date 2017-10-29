@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,21 +26,25 @@ public class BuscarArtista extends AppCompatActivity {
             "puntuacion"
     };
 
-    TextView txtNombre;
     String nombreArtista;
+    TextView txtNombre;
+
+    private static final String KEY_ARTISTA = "ARTISTA";
+    private static final String LOG_TAG = "MiW";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscar_artista);
 
-        nombreArtista = getIntent().getExtras().getString("ARTISTA");
+        nombreArtista = getIntent().getExtras().getString(KEY_ARTISTA);
         buscarArtista(nombreArtista);
 
     }
 
     public void buscarArtista (String artista) {
-        Log.i("MiW", "Entra filtrar datos");
+
+        Log.i(LOG_TAG, "Buscar artista");
 
         txtNombre = (TextView) findViewById(R.id.txt_nombreArtista);
         TextView txtInfo = (TextView) findViewById(R.id.txt_infoArtista);
@@ -84,7 +87,13 @@ public class BuscarArtista extends AppCompatActivity {
             }
 
             txtNombre.setText(nombre);
-            txtPuntuacion.setText(puntuacion);
+
+            if (puntuacion.equals("-1")){
+                txtPuntuacion.setText(" - ");
+            } else {
+                txtPuntuacion.setText(puntuacion);
+            }
+
             if (bio_contenido.startsWith(" <a")){
                 txtInfo.setText("No hay información");
             }else {
@@ -101,7 +110,7 @@ public class BuscarArtista extends AppCompatActivity {
         } else {
             Toast.makeText(
                     getApplicationContext(),
-                    "Buscando resultados..",
+                    "Buscando resultados...",
                     Toast.LENGTH_LONG
             ).show();
 
@@ -116,7 +125,13 @@ public class BuscarArtista extends AppCompatActivity {
 
     public void puntuar(View v){
         Intent i = new Intent (this, PuntuarArtista.class);
-        i.putExtra("ARTISTA", txtNombre.getText().toString());
+        i.putExtra(KEY_ARTISTA, txtNombre.getText().toString());
+        startActivity(i);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent (this, MainActivity.class);
         startActivity(i);
     }
 }

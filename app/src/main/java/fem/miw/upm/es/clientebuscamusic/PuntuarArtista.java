@@ -5,7 +5,6 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,15 +15,19 @@ public class PuntuarArtista extends Activity {
 
     private static final String CONTENT_URI = "content://fem.miw.upm.es.buscamusic.modelsArtist.provider/artistas";
 
+    private static final String KEY_ARTISTA = "ARTISTA";
+    private static final String KEY_PUNTUACION = "PUNTUACION";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_puntuar_artista);
 
-        final EditText punt = (EditText) findViewById(R.id.edit_puntuacion);
-        final String nombreArtista = getIntent().getExtras().getString("ARTISTA");
+        final EditText punt = findViewById(R.id.edit_puntuacion);
+        final String nombreArtista = getIntent().getExtras().getString(KEY_ARTISTA);
 
-        Button btnAceptar = (Button) findViewById(R.id.btn_aceptarPuntuacion);
+
+        Button btnAceptar =  findViewById(R.id.btn_aceptarPuntuacion);
         btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,12 +42,15 @@ public class PuntuarArtista extends Activity {
                     ContentResolver contentResolver = getContentResolver();
 
                     ContentValues valores = new ContentValues();
-                    valores.put("puntuacion", Integer.valueOf(punt.getText().toString()));
+                    valores.put(KEY_PUNTUACION, Integer.valueOf(punt.getText().toString()));
 
                     contentResolver.update(uriContenido, valores, null, null);
 
                     Toast.makeText(getApplicationContext(), "Puntuación registrada. ¡Gracias por la colaboración!" ,Toast.LENGTH_SHORT).show();
-                    onBackPressed();
+
+                    Intent i = new Intent (getApplicationContext(), BuscarArtista.class);
+                    i.putExtra(KEY_ARTISTA, nombreArtista);
+                    startActivity(i);
                 }
             }
         });

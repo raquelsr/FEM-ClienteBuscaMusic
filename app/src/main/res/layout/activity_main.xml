@@ -2,25 +2,58 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context="fem.miw.upm.es.clientebuscamusic.MainActivity">
 
 
-    <Button
-        android:id="@+id/btn_buscarArtista"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Buscar Artista" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_buscarAlbum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Buscar Album" />
+        <Button
+            android:id="@+id/btn_buscarArtista"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ic_micro"
+            android:text="Buscar Artista"
+            android:textSize="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:id="@+id/btn_buscarAlbum"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ic_vinilo"
+            android:text="BUSCAR ALBUM"
+            android:textSize="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_buscarTopTracks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Buscar Top Tracks" />
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:textSize="60dp"
+        android:text="TOP EXITOS"
+        android:textColor="@android:color/white"
+        android:background="@drawable/ic_top" />
 </LinearLayout>

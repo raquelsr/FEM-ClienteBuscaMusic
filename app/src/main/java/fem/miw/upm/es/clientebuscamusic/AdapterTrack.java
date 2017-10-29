@@ -1,30 +1,24 @@
 package fem.miw.upm.es.clientebuscamusic;
 
-/**
- * Created by Raquel on 29/10/17.
- */
-
-public class AdapterTrack {
+class AdapterTrack {
 
     private int n;
     private String track;
     private String artista;
     private String imagen;
-    private int id;
 
-    public AdapterTrack(int n, String track, String artista, String imagen) {
+    AdapterTrack(int n, String track, String artista, String imagen) {
         this.n = n;
         this.track = track;
         this.artista = artista;
         this.imagen = imagen;
     }
 
-    public String getTrack() {
-        return track;
+    public int getN (){
+        return n;
     }
-
-    public void setTrack(String track) {
-        this.track = track;
+    String getTrack() {
+        return track;
     }
 
     public String getArtista() {
@@ -35,11 +29,8 @@ public class AdapterTrack {
         this.artista = artista;
     }
 
-    public String getImagen() {
+    String getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
 }
