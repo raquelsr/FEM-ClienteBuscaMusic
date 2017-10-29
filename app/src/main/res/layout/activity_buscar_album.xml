@@ -52,6 +52,19 @@
         android:contentDescription="Imagen"
         app:srcCompat="@drawable/ic_busca_music" />
 
+    <Button
+        android:id="@+id/btn_AñadirComentario"
+        android:layout_width="match_parent"
+        android:onClick="añadirComentario"
+        android:layout_height="wrap_content"
+        android:text="Añadir comentario" />
+
+    <Button
+        android:id="@+id/btn_VerComentarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ver comentario" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,14 +23,20 @@ public class BuscarAlbum extends AppCompatActivity {
             "nombre",
             "artista",
             "imagen",
-            "tracks"
+            "tracks",
+            "comentarios"
     };
 
     String artista;
     String album;
+    String comentariosTotal;
+
+    TextView txtAlbum;
+    TextView txtArtista;
 
     private static final String KEY_ARTISTA = "ARTISTA";
     private static final String KEY_ALBUM = "ALBUM";
+    private static final String KEY_COMENTARIOTOTAL = "COMENTARIOSTOTAL";
     private static final String LOG_TAG = "MiW";
 
     @Override
@@ -47,8 +54,8 @@ public class BuscarAlbum extends AppCompatActivity {
 
         Log.i(LOG_TAG, "Buscar album");
 
-        TextView txtAlbum = (TextView) findViewById(R.id.txt_nombreAlbum);
-        TextView txtArtista = (TextView) findViewById(R.id.txt_nombreArtistaAlbum);
+        txtAlbum = (TextView) findViewById(R.id.txt_nombreAlbum);
+        txtArtista = (TextView) findViewById(R.id.txt_nombreArtistaAlbum);
         TextView txtTracks = (TextView) findViewById(R.id.txt_albumTracks);
         ImageView imagenView = (ImageView) findViewById(R.id.iv_Album);
 
@@ -79,12 +86,14 @@ public class BuscarAlbum extends AppCompatActivity {
             int colArtista = cursor.getColumnIndex(PROJECTION[1]);
             int colImagen = cursor.getColumnIndex(PROJECTION[2]);
             int colTracks = cursor.getColumnIndex(PROJECTION[3]);
+            int colComentarios = cursor.getColumnIndex(PROJECTION[4]);
 
             while (cursor.moveToNext()) {
                 nombre = cursor.getString(colNombre);
                 imagen = cursor.getString(colImagen);
                 artista_bd = cursor.getString(colArtista);
                 tracks = cursor.getString(colTracks);
+                comentariosTotal = cursor.getString(colComentarios);
             }
 
             txtAlbum.setText(nombre);
@@ -124,6 +133,14 @@ public class BuscarAlbum extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent i = new Intent (this, MainActivity.class);
+        startActivity(i);
+    }
+
+    public void añadirComentario(View v){
+        Intent i = new Intent (this, ComentarAlbum.class);
+        i.putExtra(KEY_ARTISTA, txtArtista.getText().toString());
+        i.putExtra(KEY_ALBUM, txtAlbum.getText().toString());
+        i.putExtra(KEY_COMENTARIOTOTAL, comentariosTotal );
         startActivity(i);
     }
 }
