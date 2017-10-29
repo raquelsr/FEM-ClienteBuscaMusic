@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fem.miw.upm.es.clientebuscamusic">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_busca_music"
@@ -16,7 +18,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".BuscarArtista" />
-        <activity android:name=".PuntuarArtista"></activity>
+        <activity
+            android:name=".PuntuarArtista"
+            android:label="Puntuar artista"
+            android:theme="@android:style/Theme.Holo.Light.Dialog" />
+        <activity android:name=".BuscarAlbum" />
+        <activity
+            android:name=".FiltroArtista"
+            android:label="Buscar artista"
+            android:theme="@android:style/Theme.Holo.Light.Dialog">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".FiltroAlbum"></activity>
     </application>
 
 </manifest>

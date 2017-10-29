@@ -21,35 +21,38 @@ public class BuscarArtista extends AppCompatActivity {
     private static final String CONTENT_URI = "content://fem.miw.upm.es.buscamusic.modelsArtist.provider/artistas";
 
     private static String[] PROJECTION = new String[] {
-            "_id",
             "nombre",
             "imagen",
-            "bio_resumen"
+            "bio_contenido",
+            "puntuacion"
     };
 
     TextView txtNombre;
+    String nombreArtista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscar_artista);
+
+        nombreArtista = getIntent().getExtras().getString("ARTISTA");
+        buscarArtista(nombreArtista);
+
     }
 
-    public void buscarArtista (View v) {
+    public void buscarArtista (String artista) {
         Log.i("MiW", "Entra filtrar datos");
 
         txtNombre = (TextView) findViewById(R.id.txt_nombreArtista);
-        TextView txtResumen = (TextView) findViewById(R.id.txt_resumenArtista);
+        TextView txtInfo = (TextView) findViewById(R.id.txt_infoArtista);
+        TextView txtPuntuacion = (TextView) findViewById(R.id.txt_puntuacionArtista);
         ImageView imagenView = (ImageView) findViewById(R.id.image_view);
-        ImageView ii = (ImageView) findViewById(R.id.ii);
-
-        EditText editArtista = (EditText) findViewById(R.id.edit_artista);
-        String nombreArtista = editArtista.getText().toString();
-
 
         txtNombre.setText("");
+        txtInfo.setText("");
+        txtPuntuacion.setText("");
 
-        String recurso = CONTENT_URI + "/" + nombreArtista;
+        String recurso = CONTENT_URI + "/" + artista;
         Uri uriContenido =  Uri.parse(recurso);
 
         ContentResolver contentResolver = getContentResolver();
@@ -65,28 +68,34 @@ public class BuscarArtista extends AppCompatActivity {
         if (cursor != null && cursor.getCount() != 0) {
             String nombre = "";
             String imagen = "";
-            String bio_resumen = "";
+            String bio_contenido = "";
+            String puntuacion = "";
 
-            int colNombre   = cursor.getColumnIndex(PROJECTION[1]);
-            int colImagen    = cursor.getColumnIndex(PROJECTION[2]);
-            int colBio_Resumen = cursor.getColumnIndex(PROJECTION[3]);
+            int colNombre   = cursor.getColumnIndex(PROJECTION[0]);
+            int colImagen    = cursor.getColumnIndex(PROJECTION[1]);
+            int colBio_Resumen = cursor.getColumnIndex(PROJECTION[2]);
+            int colPuntuacion = cursor.getColumnIndex(PROJECTION[3]);
 
             while (cursor.moveToNext()) {
                 nombre   = cursor.getString(colNombre);
                 imagen = cursor.getString(colImagen);
-                bio_resumen    = cursor.getString(colBio_Resumen);
+                bio_contenido    = cursor.getString(colBio_Resumen);
+                puntuacion = String.valueOf(cursor.getInt(colPuntuacion));
             }
 
             txtNombre.setText(nombre);
-            if (bio_resumen.startsWith(" <a")){
-                txtResumen.setText("No hay información");
+            txtPuntuacion.setText(puntuacion);
+            if (bio_contenido.startsWith(" <a")){
+                txtInfo.setText("No hay información");
             }else {
-                txtResumen.setText(bio_resumen);
+                txtInfo.setText(bio_contenido);
             }
-            Picasso.with(getApplicationContext())
-                    .load("https://lastfm-img2.akamaized.net/i/u/300x300/898dd9f0f3474ff9ad595bbc2e7cb785.png")
-                    .resize(500,500)
-                    .into(imagenView);
+
+            if (!imagen.equals("")){
+                Picasso.with(getApplicationContext())
+                        .load(imagen)
+                        .into(imagenView);
+            }
 
             cursor.close();
         } else {
@@ -99,7 +108,7 @@ public class BuscarArtista extends AppCompatActivity {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 public void run() {
-                    buscarArtista(null);
+                    buscarArtista(nombreArtista);
                 }
             }, 1000);
         }
