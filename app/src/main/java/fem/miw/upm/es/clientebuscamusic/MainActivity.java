@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         btn_buscarAlbum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent (getApplicationContext(), BuscarAlbum.class);
+                Intent i = new Intent (getApplicationContext(), FiltroAlbum.class);
                 startActivity(i);
             }
         });

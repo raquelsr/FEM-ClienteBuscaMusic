@@ -10,94 +10,71 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:text="Introduce nombre del artista o grupo musical: " />
+        android:text="Nombre del artista: "
+        android:textColor="@android:color/darker_gray"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
-    <EditText
+    <TextView
+        android:id="@+id/txt_nombreArtistaAlbum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/edit_artistaAlbum"
-        android:hint="Artista"/>
+        android:layout_gravity="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="24dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Album"/>
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Nombre del album: "
+        android:textColor="@android:color/darker_gray"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/txt_nombreAlbum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_gravity="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="24dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
+    <ImageView
+        android:id="@+id/iv_Album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:contentDescription="Imagen"
+        app:srcCompat="@drawable/ic_busca_music" />
 
-        <EditText
-            android:id="@+id/edit_album"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="Nombre del album" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Buscar"
-            android:onClick="buscarAlbum"
-            android:id="@+id/btn_buscarAlbum"></Button>
-    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tracks del album "
+        android:layout_marginTop="10dp"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18dp"/>
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:textColor="@android:color/background_dark"
+            android:textSize="16dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/txt_albumTracks"/>
 
-            <ImageView
-                android:id="@+id/image_viewAlbum"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:contentDescription="Buscar"
-                app:srcCompat="@drawable/ic_busca_music" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nombre: "/>
-
-            <TextView
-                android:id="@+id/txt_nombreAlbum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Información: "/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/txt_tracksAlbum"/>
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ii"/>
-
-            <Button
-                android:id="@+id/btn_puntuar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="puntuar"
-                android:text="Puntuar" />
-        </LinearLayout>
     </ScrollView>
+
+
 </LinearLayout>

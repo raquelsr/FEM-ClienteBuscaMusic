@@ -1,15 +1,12 @@
 package fem.miw.upm.es.clientebuscamusic;
 
 import android.content.ContentResolver;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,29 +24,33 @@ public class BuscarAlbum extends AppCompatActivity {
             "tracks"
     };
 
-    TextView txtNombre;
+    TextView txtAlbum;
+    String artista;
+    String album;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscar_album);
+
+        artista = getIntent().getExtras().getString("ARTISTA");
+        album = getIntent().getExtras().getString("ALBUM");
+        buscarAlbum(artista, album);
+
     }
 
-    public void buscarAlbum(View v) {
+    public void buscarAlbum(final String artista, final String album) {
         Log.i("MiW", "Entra filtrar datos");
 
-        txtNombre = (TextView) findViewById(R.id.txt_nombreAlbum);
-        TextView txtTracks = (TextView) findViewById(R.id.txt_tracksAlbum);
-        ImageView imagenView = (ImageView) findViewById(R.id.image_viewAlbum);
+        txtAlbum = (TextView) findViewById(R.id.txt_nombreAlbum);
+        TextView txtArtista = (TextView) findViewById(R.id.txt_nombreArtistaAlbum);
+        TextView txtTracks = (TextView) findViewById(R.id.txt_albumTracks);
+        ImageView imagenView = (ImageView) findViewById(R.id.iv_Album);
 
-        EditText editArtista = (EditText) findViewById(R.id.edit_artistaAlbum);
-        EditText editAlbum = (EditText) findViewById(R.id.edit_album);
-        String nombreArtista = editArtista.getText().toString();
-        String nombreAlbum = editAlbum.getText().toString();
+        txtAlbum.setText("");
+        txtTracks.setText("");
 
-        txtNombre.setText("");
-
-        String recurso = CONTENT_URI + "/" + nombreArtista + "/" + nombreAlbum;
+        String recurso = CONTENT_URI + "/" + artista + "/" + album;
         Uri uriContenido = Uri.parse(recurso);
 
         ContentResolver contentResolver = getContentResolver();
@@ -64,7 +65,7 @@ public class BuscarAlbum extends AppCompatActivity {
 
         if (cursor != null && cursor.getCount() != 0) {
             String nombre = "";
-            String artista = "";
+            String artista_bd = "";
             String imagen = "";
             String tracks = "";
 
@@ -76,17 +77,24 @@ public class BuscarAlbum extends AppCompatActivity {
             while (cursor.moveToNext()) {
                 nombre = cursor.getString(colNombre);
                 imagen = cursor.getString(colImagen);
-                artista = cursor.getString(colArtista);
+                artista_bd = cursor.getString(colArtista);
                 tracks = cursor.getString(colTracks);
             }
 
-            txtNombre.setText(nombre);
-            txtTracks.setText(tracks);
+            txtAlbum.setText(nombre);
+            txtArtista.setText(artista_bd);
+
+            String resultadoTracks = "";
+            String[] splitTracks = tracks.split(";");
+            for (int i=0; i<splitTracks.length; i++){
+                resultadoTracks = resultadoTracks.concat(String.valueOf(i+1) + " - " + splitTracks[i] + "\n");
+            }
+
+            txtTracks.setText(resultadoTracks);
 
             if (!imagen.equals("")){
                 Picasso.with(getApplicationContext())
                         .load(imagen)
-                        .resize(500, 500)
                         .into(imagenView);
             }
 
@@ -101,15 +109,9 @@ public class BuscarAlbum extends AppCompatActivity {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 public void run() {
-                    buscarAlbum(null);
+                    buscarAlbum(artista, album);
                 }
             }, 1000);
         }
-    }
-
-    public void puntuar(View v) {
-        Intent i = new Intent(this, PuntuarArtista.class);
-        i.putExtra("ARTISTA", txtNombre.getText().toString());
-        startActivity(i);
     }
 }
