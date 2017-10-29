@@ -7,10 +7,15 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BuscarTopTracks extends AppCompatActivity {
 
@@ -37,10 +42,6 @@ public class BuscarTopTracks extends AppCompatActivity {
     public void buscarTopTracks (final int limite) {
         Log.i("MiW", "Entra filtrar datos");
 
-        txtTopTracks = (TextView) findViewById(R.id.txt_topTracks);
-
-        txtTopTracks.setText("");
-
         String recurso = CONTENT_URI + "/" + limite;
         Uri uriContenido =  Uri.parse(recurso);
 
@@ -64,22 +65,26 @@ public class BuscarTopTracks extends AppCompatActivity {
             int colImagen    = cursor.getColumnIndex(PROJECTION[1]);
             int colArtista = cursor.getColumnIndex(PROJECTION[2]);
 
-            String resultado = "";
             int i = 1;
+
+            ArrayList<AdapterTrack> tracks = new ArrayList<>();
 
             if (cursor.moveToFirst()) {
                 while (!cursor.isAfterLast()) {
                     nombre   = cursor.getString(colNombre);
                     imagen = cursor.getString(colImagen);
                     artista    = cursor.getString(colArtista);
-                    resultado = resultado.concat(i + " - " + nombre + " - " + artista + "\n");
-                    i++;
+
+                    AdapterTrack track = new AdapterTrack(i, nombre, artista, imagen);
+                    tracks.add(track);
 
                     cursor.moveToNext();
                 }
             }
 
-            txtTopTracks.setText(resultado);
+            ListView lista = (ListView) findViewById(R.id.list_tracks);
+            AdapterTopTracks adapter = new AdapterTopTracks(getApplicationContext(), tracks);
+            lista.setAdapter(adapter);
 
             cursor.close();
         } else {
