@@ -31,10 +31,15 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".FiltroAlbum"
+        <activity
+            android:name=".FiltroAlbum"
             android:label="Buscar Album"
-            android:theme="@android:style/Theme.Holo.Light.Dialog">
-        </activity>
+            android:theme="@android:style/Theme.Holo.Light.Dialog"></activity>
+        <activity
+            android:name=".FiltroTopTracks"
+            android:label="Buscar Top Tracks"
+            android:theme="@android:style/Theme.Holo.Light.Dialog"></activity>
+        <activity android:name=".BuscarTopTracks"></activity>
     </application>
 
 </manifest>

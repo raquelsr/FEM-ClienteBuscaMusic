@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="fem.miw.upm.es.clientebuscamusic.FiltroArtista">
+    tools:context="fem.miw.upm.es.clientebuscamusic.FiltroTopTracks">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
-        android:text="Introduce nombre del artista o grupo musical: "
+        android:text="Introduce el número de canciones que desea consultar: "
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -20,13 +20,15 @@
 
 
     <EditText
-        android:id="@+id/edit_filtroartista"
+        android:id="@+id/edit_filtroTopTracks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="10dp"
-        android:hint="Ej: Mecano"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Ej: 10"
         tools:ignore="RtlHardcoded" />
 
     <Button
@@ -38,10 +40,11 @@
         android:layout_marginBottom="5dp"
         android:layout_marginRight="10dp"
         android:background="@color/colorAccent"
-        android:onClick="buscarArtistaFiltro"
+        android:onClick="buscarTopTracks"
         android:text="Buscar"
         android:textColor="@android:color/black"
         android:textSize="18sp">
     </Button>
+
 
 </LinearLayout>
