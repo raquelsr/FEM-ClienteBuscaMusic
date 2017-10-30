@@ -26,9 +26,6 @@ public class BuscarTopTracks extends AppCompatActivity {
             "artista"
     };
 
-    String limite;
-
-    private static final String KEY_LIMITE = "LIMITE";
     private static final String LOG_TAG = "MiW";
 
     @Override
@@ -36,15 +33,14 @@ public class BuscarTopTracks extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscar_top_tracks);
 
-        limite = getIntent().getExtras().getString(KEY_LIMITE);
-        buscarTopTracks(Integer.valueOf(limite));
+        buscarTopTracks();
     }
 
-    public void buscarTopTracks (final int limite) {
+    public void buscarTopTracks () {
 
         Log.i(LOG_TAG, "Buscar top tracks");
 
-        String recurso = CONTENT_URI + "/" + limite;
+        String recurso = CONTENT_URI;
         Uri uriContenido =  Uri.parse(recurso);
 
         ContentResolver contentResolver = getContentResolver();
@@ -100,7 +96,7 @@ public class BuscarTopTracks extends AppCompatActivity {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 public void run() {
-                    buscarTopTracks(limite);
+                    buscarTopTracks();
                 }
             }, 1000);
         }

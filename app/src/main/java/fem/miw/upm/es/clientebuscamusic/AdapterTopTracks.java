@@ -46,8 +46,8 @@ class AdapterTopTracks extends ArrayAdapter {
             TextView tv_numer = convertView.findViewById(R.id.txt_numtrack);
             tv_numer.setText(String.valueOf(track.getN()));
 
-            TextView tv = convertView.findViewById(R.id.txt_track);
-            tv.setText(track.getTrack());
+            TextView tv_track = convertView.findViewById(R.id.txt_track);
+            tv_track.setText(track.getTrack());
 
             TextView tv_artista = convertView.findViewById(R.id.txt_trackArtista);
             tv_artista.setText(track.getArtista());

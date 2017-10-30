@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
-        android:text="Valora del 1 al 10 al artista:"
+        android:text="Valora del 0 al 10 al artista:"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold"

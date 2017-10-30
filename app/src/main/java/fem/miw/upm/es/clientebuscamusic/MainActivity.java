@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         btn_buscarTopTrakcs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), FiltroTopTracks.class);
+                Intent i = new Intent(getApplicationContext(), BuscarTopTracks.class);
                 startActivity(i);
             }
         });

@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/ic_micro"
-            android:text="Buscar Artista"
+            android:text="BUSCAR ARTISTA"
             android:textSize="40dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"

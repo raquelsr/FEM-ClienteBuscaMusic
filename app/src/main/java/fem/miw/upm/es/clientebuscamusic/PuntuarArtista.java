@@ -34,7 +34,7 @@ public class PuntuarArtista extends Activity {
                 if (punt.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), "Introduce puntuación", Toast.LENGTH_SHORT).show();
                 }else if ((Integer.valueOf(punt.getText().toString())>10) || (Integer.valueOf(punt.getText().toString())<0)){
-                    Toast.makeText(getApplicationContext(), "La puntuación debe ser entre 1 y 10.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "La puntuación debe ser entre 0 y 10.", Toast.LENGTH_SHORT).show();
                 } else {
                     String recurso = CONTENT_URI + "/" + nombreArtista;
                     Uri uriContenido =  Uri.parse(recurso);

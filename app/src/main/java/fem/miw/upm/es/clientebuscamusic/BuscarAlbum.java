@@ -150,4 +150,10 @@ public class BuscarAlbum extends AppCompatActivity {
         i.putExtra(KEY_COMENTARIOTOTAL, comentariosTotal );
         startActivity(i);
     }
+
+    public void verComentarios (View v){
+        Intent i = new Intent(this, VerComentariosAlbum.class);
+        i.putExtra(KEY_COMENTARIOTOTAL, comentariosTotal);
+        startActivity(i);
+    }
 }
