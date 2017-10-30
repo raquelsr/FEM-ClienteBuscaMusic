@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class FiltroArtista extends Activity {
 
@@ -18,8 +19,12 @@ public class FiltroArtista extends Activity {
 
     public void buscarArtistaFiltro(View v){
         EditText nombreArtista = findViewById(R.id.edit_filtroartista);
-        Intent i = new Intent (this, BuscarArtista.class);
-        i.putExtra(KEY_ARTISTA, nombreArtista.getText().toString());
-        startActivity(i);
+        if (nombreArtista.getText().toString().equals("")){
+            Toast.makeText(this, "Introduce nombre del artista.", Toast.LENGTH_SHORT).show();
+        } else {
+            Intent i = new Intent (this, BuscarArtista.class);
+            i.putExtra(KEY_ARTISTA, nombreArtista.getText().toString());
+            startActivity(i);
+        }
     }
 }

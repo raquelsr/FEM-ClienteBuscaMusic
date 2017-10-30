@@ -34,6 +34,8 @@ public class BuscarAlbum extends AppCompatActivity {
     TextView txtAlbum;
     TextView txtArtista;
 
+    int i = 0;
+
     private static final String KEY_ARTISTA = "ARTISTA";
     private static final String KEY_ALBUM = "ALBUM";
     private static final String KEY_COMENTARIOTOTAL = "COMENTARIOSTOTAL";
@@ -76,6 +78,8 @@ public class BuscarAlbum extends AppCompatActivity {
                 null
         );
 
+        i++;
+
         if (cursor != null && cursor.getCount() != 0) {
             String nombre = "";
             String artista_bd = "";
@@ -114,7 +118,7 @@ public class BuscarAlbum extends AppCompatActivity {
             }
 
             cursor.close();
-        } else {
+        } else if (i < 2){
             Toast.makeText(
                     getApplicationContext(),
                     "Buscando resultados...",
@@ -127,6 +131,9 @@ public class BuscarAlbum extends AppCompatActivity {
                     buscarAlbum(artista, album);
                 }
             }, 1000);
+        } else {
+            txtArtista.setText("---------");
+            txtAlbum.setText("NO HAY INFORMACIÓN");
         }
     }
 

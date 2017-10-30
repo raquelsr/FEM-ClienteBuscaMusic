@@ -20,6 +20,7 @@ public class BuscarTopTracks extends AppCompatActivity {
     private static final String CONTENT_URI = "content://fem.miw.upm.es.buscamusic.modelsTopTracks.provider/topTracks";
 
     private static String[] PROJECTION = new String[] {
+            "_id",
             "nombre",
             "imagen",
             "artista"
@@ -61,22 +62,23 @@ public class BuscarTopTracks extends AppCompatActivity {
             String nombre;
             String imagen;
             String artista;
+            int id;
 
-            int colNombre   = cursor.getColumnIndex(PROJECTION[0]);
-            int colImagen    = cursor.getColumnIndex(PROJECTION[1]);
-            int colArtista = cursor.getColumnIndex(PROJECTION[2]);
-
-            int i = 1;
+            int colId = cursor.getColumnIndex(PROJECTION[0]);
+            int colNombre   = cursor.getColumnIndex(PROJECTION[1]);
+            int colImagen    = cursor.getColumnIndex(PROJECTION[2]);
+            int colArtista = cursor.getColumnIndex(PROJECTION[3]);
 
             ArrayList<AdapterTrack> tracks = new ArrayList<>();
 
             if (cursor.moveToFirst()) {
                 while (!cursor.isAfterLast()) {
+                    id = cursor.getInt(colId);
                     nombre   = cursor.getString(colNombre);
                     imagen = cursor.getString(colImagen);
                     artista    = cursor.getString(colArtista);
 
-                    AdapterTrack track = new AdapterTrack(i, nombre, artista, imagen);
+                    AdapterTrack track = new AdapterTrack(id, nombre, artista, imagen);
                     tracks.add(track);
 
                     cursor.moveToNext();

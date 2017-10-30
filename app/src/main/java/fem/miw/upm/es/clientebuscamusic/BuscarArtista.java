@@ -29,6 +29,8 @@ public class BuscarArtista extends AppCompatActivity {
     String nombreArtista;
     TextView txtNombre;
 
+    int i = 0;
+
     private static final String KEY_ARTISTA = "ARTISTA";
     private static final String LOG_TAG = "MiW";
 
@@ -67,6 +69,8 @@ public class BuscarArtista extends AppCompatActivity {
                 null,
                 null
         );
+
+        i++;
 
         if (cursor != null && cursor.getCount() != 0) {
             String nombre = "";
@@ -107,7 +111,7 @@ public class BuscarArtista extends AppCompatActivity {
             }
 
             cursor.close();
-        } else {
+        } else if ( i < 2){
             Toast.makeText(
                     getApplicationContext(),
                     "Buscando resultados...",
@@ -117,9 +121,12 @@ public class BuscarArtista extends AppCompatActivity {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 public void run() {
-                    buscarArtista(nombreArtista);
+                        buscarArtista(nombreArtista);
                 }
             }, 1000);
+        } else {
+            txtNombre.setText("NO HAY INFORMACIÓN");
+            txtNombre.setTextSize(26);
         }
     }
 
