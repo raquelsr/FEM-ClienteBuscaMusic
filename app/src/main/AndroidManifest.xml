@@ -41,6 +41,10 @@
             android:label="Añadir comentario al album"
             android:theme="@android:style/Theme.Holo.Light.Dialog" />
         <activity android:name=".VerComentariosAlbum" />
+        <activity android:name=".AcercaDe"
+            android:label="Acerca de"
+            android:theme="@android:style/Theme.Holo.Light.Dialog" >
+        </activity>
     </application>
 
 </manifest>

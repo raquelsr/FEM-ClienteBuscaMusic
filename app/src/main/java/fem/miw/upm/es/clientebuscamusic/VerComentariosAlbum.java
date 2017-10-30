@@ -20,13 +20,16 @@ public class VerComentariosAlbum extends AppCompatActivity {
 
         ArrayList<String> comentariosList = new ArrayList();
 
-        String[] comentario = comentarios.split(";");
-        for (int i = 0; i<comentario.length; i++){
-            comentariosList.add(comentario[i]);
+        if (comentarios != null){
+            String[] comentario = comentarios.split(";");
+            for (int i = 0; i<comentario.length; i++){
+                comentariosList.add(comentario[i]);
+            }
+
+            ListView listaComentarios = (ListView) findViewById(R.id.list_comentarios);
+            AdapterComentarios adapter = new AdapterComentarios(getApplicationContext(), comentariosList);
+            listaComentarios.setAdapter(adapter);
         }
 
-        ListView listaComentarios = (ListView) findViewById(R.id.list_comentarios);
-        AdapterComentarios adapter = new AdapterComentarios(getApplicationContext(), comentariosList);
-        listaComentarios.setAdapter(adapter);
     }
 }
