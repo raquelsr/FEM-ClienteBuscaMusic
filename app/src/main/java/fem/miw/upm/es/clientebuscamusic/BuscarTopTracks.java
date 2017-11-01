@@ -40,8 +40,7 @@ public class BuscarTopTracks extends AppCompatActivity {
 
         Log.i(LOG_TAG, "Buscar top tracks");
 
-        String recurso = CONTENT_URI;
-        Uri uriContenido =  Uri.parse(recurso);
+        Uri uriContenido =  Uri.parse(CONTENT_URI);
 
         ContentResolver contentResolver = getContentResolver();
 
@@ -53,6 +52,7 @@ public class BuscarTopTracks extends AppCompatActivity {
                 null
         );
 
+        assert cursor != null;
         if (cursor.getCount() != 0) {
 
             String nombre;
@@ -89,7 +89,7 @@ public class BuscarTopTracks extends AppCompatActivity {
         } else {
             Toast.makeText(
                     getApplicationContext(),
-                    "Buscando resultados..",
+                    R.string.buscandoResultados,
                     Toast.LENGTH_LONG
             ).show();
 

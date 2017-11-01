@@ -23,9 +23,9 @@ public class FiltroAlbum extends Activity {
         EditText editAlbum = findViewById(R.id.edit_filtroAlbumalbum);
 
         if (editArtista.getText().toString().equals("")){
-            Toast.makeText(this, "Introduce nombre del artista.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.introduceArtista, Toast.LENGTH_SHORT).show();
         } else if (editAlbum.getText().toString().equals("")){
-            Toast.makeText(this, "Introduce nombre del album.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.introduceDisco, Toast.LENGTH_SHORT).show();
         } else {
             Intent i = new Intent(this, BuscarAlbum.class);
             i.putExtra(KEY_ARTISTA , editArtista.getText().toString());
