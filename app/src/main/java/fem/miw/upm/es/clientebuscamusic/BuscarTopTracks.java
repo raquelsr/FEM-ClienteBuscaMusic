@@ -53,7 +53,7 @@ public class BuscarTopTracks extends AppCompatActivity {
                 null
         );
 
-        if (cursor != null && cursor.getCount() != 0) {
+        if (cursor.getCount() != 0) {
 
             String nombre;
             String imagen;

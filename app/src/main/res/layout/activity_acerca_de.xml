@@ -10,13 +10,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:text="BuscaMusic es una aplicación que permite buscar información sobre tus artistas favoritos o discos.
-También se puede consultar el TOP 100 de canciones actuales. Permite puntuar y comentar."
+        android:text="BuscaMusic permite consultar información sobre tus artistas favoritos o sus discos y consultar el top 50 de éxitos actuales.
+Además podrás compartir comentarios sobre discos y puntuar a los artistas."
         android:textColor="@android:color/black"
         android:textSize="18sp"
-        android:textStyle="bold"
         tools:ignore="RtlHardcoded" />
 
     <Button

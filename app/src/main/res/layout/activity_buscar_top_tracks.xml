@@ -14,7 +14,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:text="TOP 100"
+        android:text="TOP 50"
         android:textColor="@android:color/background_dark"
         android:textSize="36dp"
         android:textStyle="bold"
