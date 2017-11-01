@@ -10,7 +10,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -23,9 +24,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="Nombre del artista: "
+                android:text="@string/nombre_del_artista"
                 android:textColor="@color/colorTitulos"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -34,16 +35,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textColor="@android:color/background_dark"
-                android:textSize="24dp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="Nombre del album: "
+                android:text="@string/nombre_del_disco"
                 android:textColor="@color/colorTitulos"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -53,7 +54,8 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:textColor="@android:color/background_dark"
-                android:textSize="24dp" />
+                android:textSize="24sp"
+                tools:ignore="RtlHardcoded" />
 
             <ImageView
                 android:id="@+id/iv_Album"
@@ -61,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:contentDescription="Imagen"
+                android:contentDescription="@string/imagen"
                 app:srcCompat="@drawable/ic_busca_music" />
         </LinearLayout>
 
@@ -80,7 +82,7 @@
                 android:layout_marginTop="15dp"
                 android:background="@color/colorAccent"
                 android:onClick="añadirComentario"
-                android:text="Añadir comentario"
+                android:text="@string/añadir_comentario"
                 android:textColor="@android:color/black" />
 
             <Button
@@ -92,7 +94,7 @@
                 android:layout_marginTop="15dp"
                 android:background="@color/colorAccent"
                 android:onClick="verComentarios"
-                android:text="Ver comentario"
+                android:text="@string/ver_comentario"
                 android:textColor="@android:color/black" />
 
         </LinearLayout>
@@ -105,9 +107,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
-        android:text="Tracks del album "
+        android:text="@string/tracks_del_disco"
         android:textColor="@color/colorTitulos"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <ScrollView
@@ -119,10 +121,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:paddingTop="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:textColor="@android:color/background_dark"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
     </ScrollView>
 

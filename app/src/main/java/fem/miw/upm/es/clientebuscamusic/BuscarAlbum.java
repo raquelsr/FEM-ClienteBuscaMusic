@@ -118,10 +118,10 @@ public class BuscarAlbum extends AppCompatActivity {
             }
 
             cursor.close();
-        } else if (i < 2){
+        } else if (i < 3){
             Toast.makeText(
                     getApplicationContext(),
-                    "Buscando resultados...",
+                    R.string.buscandoResultados,
                     Toast.LENGTH_LONG
             ).show();
 
@@ -133,7 +133,7 @@ public class BuscarAlbum extends AppCompatActivity {
             }, 1000);
         } else {
             txtArtista.setText("---------");
-            txtAlbum.setText("NO HAY INFORMACIÓN");
+            txtAlbum.setText(R.string.noInformacion);
         }
     }
 

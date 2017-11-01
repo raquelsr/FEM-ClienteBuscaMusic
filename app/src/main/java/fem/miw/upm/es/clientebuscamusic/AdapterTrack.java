@@ -14,7 +14,7 @@ class AdapterTrack {
         this.imagen = imagen;
     }
 
-    public int getN (){
+    int getN (){
         return n;
     }
     String getTrack() {

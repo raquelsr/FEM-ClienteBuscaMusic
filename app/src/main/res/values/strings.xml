@@ -1,3 +1,50 @@
 <resources>
     <string name="app_name">Cliente BuscaMusic</string>
+
+    <string name="buscandoResultados">Buscando resultados...</string>
+    <string name="noInformacion">NO HAY INFORMACIÓN</string>
+    <string name="aceptar">ACEPTAR</string>
+    <string name="a_adir">AÑADIR</string>
+    <string name="buscar">BUSCAR</string>
+
+    <string name="buscar_disco">BUSCAR DISCO</string>
+    <string name="buscar_artista">BUSCAR ARTISTA</string>
+    <string name="top_exitos_titulo">TOP ÉXITOS</string>
+
+
+    <string name="introduceArtista">Introduce nombre del artista.</string>
+    <string name="introduceDisco">Introduce nombre del disco.</string>
+
+    <string name="acerca_de">BuscaMusic permite consultar información sobre tus artistas favoritos o sus discos y ver los éxitos actuales.
+        \nAdemás podrás compartir comentarios sobre discos y puntuar a los artistas.</string>
+
+    <string name="imagen">Imagen</string>
+    <string name="comentario">Comentario</string>
+    <string name="añadir_comentario">Añadir comentario</string>
+    <string name="ver_comentario">Ver comentarios</string>
+
+    <string name="añadir_comentario_texto">Introduce comentario sobre el disco:</string>
+    <string name="introduce_disco">Introduce el nombre del disco:</string>
+    <string name="introduce_artista">Introduce nombre del artista o grupo musical:</string>
+    <string name="valorar_artista">Valora del 0 al 10 al artista:</string>
+
+    <string name="nombre_del_disco">Nombre del disco:</string>
+    <string name="nombre_del_artista">Nombre del artista:</string>
+    <string name="tracks_del_disco">Tracks del disco</string>
+    <string name="informaci_n">Información:</string>
+    <string name="nombre">Nombre:</string>
+    <string name="puntuaci_n">Puntuación:</string>
+    <string name="puntuar">Puntuar</string>
+    <string name="top_exitos">TOP ÉXITOS ACTUALES</string>
+
+    <string name="comentarios_del_disco">COMENTARIOS DEL DISCO</string>
+
+    <string name="ej_disco">Ej: Destrangis</string>
+    <string name="ej_artista">Ej: Estopa</string>
+    <string name="ej_artista2">Ej: Mecano</string>
+    <string name="ej_puntuacion">Ej: 7</string>
+    <string name="artista">Artista</string>
+    <string name="numero">Numero</string>
+    <string name="track">Track</string>
+
 </resources>

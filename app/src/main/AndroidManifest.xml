@@ -33,12 +33,12 @@
         </activity>
         <activity
             android:name=".FiltroAlbum"
-            android:label="Buscar Album"
+            android:label="Buscar disco"
             android:theme="@android:style/Theme.Holo.Light.Dialog" />
         <activity android:name=".BuscarTopTracks" />
         <activity
             android:name=".ComentarAlbum"
-            android:label="Añadir comentario al album"
+            android:label="Añadir comentario al disco"
             android:theme="@android:style/Theme.Holo.Light.Dialog" />
         <activity android:name=".VerComentariosAlbum" />
         <activity android:name=".AcercaDe"

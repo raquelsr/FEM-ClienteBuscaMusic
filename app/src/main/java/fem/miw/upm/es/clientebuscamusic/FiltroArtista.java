@@ -20,7 +20,7 @@ public class FiltroArtista extends Activity {
     public void buscarArtistaFiltro(View v){
         EditText nombreArtista = findViewById(R.id.edit_filtroartista);
         if (nombreArtista.getText().toString().equals("")){
-            Toast.makeText(this, "Introduce nombre del artista.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.introduceArtista, Toast.LENGTH_SHORT).show();
         } else {
             Intent i = new Intent (this, BuscarArtista.class);
             i.putExtra(KEY_ARTISTA, nombreArtista.getText().toString());

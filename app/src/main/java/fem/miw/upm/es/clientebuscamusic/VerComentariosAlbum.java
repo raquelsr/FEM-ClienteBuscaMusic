@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class VerComentariosAlbum extends AppCompatActivity {
 
@@ -18,7 +17,7 @@ public class VerComentariosAlbum extends AppCompatActivity {
 
         String comentarios = getIntent().getExtras().getString(KEY_COMENTARIOTOTAL);
 
-        ArrayList<String> comentariosList = new ArrayList();
+        ArrayList<String> comentariosList = new ArrayList<>();
 
         if (comentarios != null){
             String[] comentario = comentarios.split(";");

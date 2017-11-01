@@ -99,7 +99,7 @@ public class BuscarArtista extends AppCompatActivity {
             }
 
             if (bio_contenido.startsWith(" <a")){
-                txtInfo.setText("No hay información");
+                txtInfo.setText(R.string.noInformacion);
             }else {
                 txtInfo.setText(bio_contenido);
             }
@@ -111,10 +111,10 @@ public class BuscarArtista extends AppCompatActivity {
             }
 
             cursor.close();
-        } else if ( i < 2){
+        } else if ( i < 3){
             Toast.makeText(
                     getApplicationContext(),
-                    "Buscando resultados...",
+                    R.string.buscandoResultados,
                     Toast.LENGTH_LONG
             ).show();
 
@@ -125,7 +125,7 @@ public class BuscarArtista extends AppCompatActivity {
                 }
             }, 1000);
         } else {
-            txtNombre.setText("NO HAY INFORMACIÓN");
+            txtNombre.setText(R.string.noInformacion);
             txtNombre.setTextSize(26);
         }
     }
